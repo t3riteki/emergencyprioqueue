@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TaskAddEdit">
+   <children>
+      <Line endX="101.0" layoutX="499.0" layoutY="60.0" startX="-499.0" />
+      <Label layoutX="24.0" layoutY="14.0" text="TASK PROMPT">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <ComboBox layoutX="264.0" layoutY="144.0" prefHeight="35.0" prefWidth="200.0" />
+      <Spinner layoutX="264.0" layoutY="203.0" prefHeight="35.0" prefWidth="200.0" />
+      <Label layoutX="136.0" layoutY="263.0" text="Address:">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <TextField layoutX="264.0" layoutY="263.0" prefHeight="151.0" prefWidth="200.0" />
+      <Button layoutX="104.0" layoutY="466.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Done">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Button>
+      <Button layoutX="340.0" layoutY="466.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Cancel">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Button>
+      <Label layoutX="136.0" layoutY="203.0" text="Severity:">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="136.0" layoutY="141.0" text="Code:">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
