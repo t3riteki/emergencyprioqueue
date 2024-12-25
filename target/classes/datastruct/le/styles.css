@@ -1,6 +1,6 @@
-/* Reference https://www.youtube.com/watch?v=H7JG947tLzo*/
+/* Reference https://www.youtube.com/watch?v=H7JG947tLzo */
 
-.table-view { /*for teh whole table view*/
+.table-view { /*for the whole table view*/
     -fx-background-color: rgb(55, 56, 85);/*use rgb or rgba if possible*/
 }
 
@@ -15,10 +15,9 @@
 }
 
 .table-view .column-header-background .label{ /* text sa header*/
-    -fx-background-color: transparent;
+    -fx-background-color: linear-gradient(white, black)  ;
     -fx-text-fill: white;
     -fx-font-weight: bold;
-    
 }
 
 .table-row-cell{
