@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -11,9 +12,9 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="AnchorP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1900.0" stylesheets="@../../../styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="AnchorP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <TableView layoutX="-5.0" layoutY="178.0" prefHeight="700.0" prefWidth="1505.0">
+        <TableView layoutX="-5.0" layoutY="178.0" prefHeight="700.0" prefWidth="1505.0" stylesheets="@styles.css">
             <columns>
                 <TableColumn fx:id="taskCol" prefWidth="250.0" text="TASK ID" />
                 <TableColumn fx:id="codeCol" prefWidth="250.0" text="CODES" />
@@ -55,4 +56,8 @@
       <Button fx:id="CodeEdit" layoutX="1715.0" layoutY="949.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Edit" textAlignment="JUSTIFY" />
       <Button fx:id="CodeDel" layoutX="1623.0" layoutY="1011.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Delete" textAlignment="JUSTIFY" />
     </children>
+   <stylesheets>
+      <URL value="@../../../styles.css" />
+      <URL value="@styles.css" />
+   </stylesheets>
 </AnchorPane>

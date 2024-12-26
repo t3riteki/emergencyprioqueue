@@ -1,13 +1,18 @@
 /* Reference https://www.youtube.com/watch?v=H7JG947tLzo*/
 #AnchorP{
     -fx-background-color: linear-gradient(to left, #1A1F3C, #2C3247);
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
 }
 .table-view { /*for teh whole table view*/
     -fx-background-color: linear-gradient(to bottom, #1A1F3C, #2C3247);
+    -fx-border-width: 1;
+    -fx-border-color: white;
 
 }
 
-#Label1 {
+#tvMain {
     -fx-font-family: "DejaVu Serif";
     -fx-font-size: 45;
     -fx-background-color: transparent;
@@ -15,18 +20,33 @@
     -fx-font-weight: bold;
 }
 
-#Label2 {
+#codeLab {
     -fx-font-family: "DejaVu Serif";
-    -fx-font-size: 22;
+    -fx-font-size: 20;
     -fx-alignment: center;
     -fx-background-color: #3D5A80;
     -fx-text-fill: #E8E9ED;
     -fx-font-weight: bold;
+    -fx-background-radius: 5;
     -fx-border-width: 2;
     -fx-border-color: white;
 }
+/*Buttons */
+#SaveB {
+    -fx-font-family: "DejaVu Serif";
+    -fx-background-color: rgba(255, 255, 255, 0.2); /* Transparent white */
+    -fx-border-color: #ffffff; /* White border */
+    -fx-border-width: 2px;
+    -fx-border-radius: 5; /* Rounded corners */
+    -fx-text-fill: #ffffff; /* White text */
+    -fx-font-size: 18px;
+}
+#SaveB:hover {
+    -fx-background-color: rgba(0, 0, 0, 0.4); /* More opaque on hover */
+    -fx-text-fill: #ffffff;
+}
 
-#Button1 {
+#LoadB {
     -fx-font-family: "DejaVu Serif";
     -fx-background-color: rgba(255, 255, 255, 0.2); /* Transparent white */
     -fx-background-radius: 10;
@@ -36,43 +56,12 @@
     -fx-text-fill: #ffffff; /* White text */
     -fx-font-size: 18px;
 }
-#Button1:hover {
+#LoadB:hover {
     -fx-background-color: rgba(0, 0, 0, 0.4); /* More opaque on hover */
     -fx-text-fill: #ffffff;
 }
-
-#Button2 {
-    -fx-font-family: "DejaVu Serif";
-    -fx-background-color: rgba(255, 255, 255, 0.2); /* Transparent white */
-    -fx-background-radius: 10;
-    -fx-border-color: #ffffff; /* White border */
-    -fx-border-width: 2px;
-    -fx-border-radius: 10; /* Rounded corners */
-    -fx-text-fill: #ffffff; /* White text */
-    -fx-font-size: 18px;
-}
-#Button2:hover {
-    -fx-background-color: rgba(0, 0, 0, 0.4); /* More opaque on hover */
-    -fx-text-fill: #ffffff;
-}
-
-#Button3 {
-    -fx-font-family: "DejaVu Serif";
-    -fx-background-color: rgba(255, 255, 255, 0.2); /* Transparent white */
-    -fx-background-radius: 10;
-    -fx-border-color: #ffffff; /* White border */
-    -fx-border-width: 2px;
-    -fx-border-radius: 10; /* Rounded corners */
-    -fx-text-fill: #ffffff; /* White text */
-    -fx-font-size: 18px;
-}
-
-#Button3:hover {
-    -fx-background-color: rgba(0, 0, 0, 0.4); /* More opaque on hover */
-    -fx-text-fill: #ffffff;
-}
-
-#Button4 {
+/*Buttons */
+#tAdd {
     -fx-font-family: "DejaVu Serif";
     -fx-background-color: rgba(255, 255, 255, 0.2); /* Transparent white */
     -fx-background-radius: 10;
@@ -83,12 +72,12 @@
     -fx-font-size: 18px;
 }
 
-#Button4:hover {
+#tAdd:hover {
     -fx-background-color: rgba(0, 0, 0, 0.4); /* More opaque on hover */
     -fx-text-fill: #ffffff;
 }
 
-#Button5 {
+#tDel {
     -fx-font-family: "DejaVu Serif";
     -fx-background-color: rgba(255, 255, 255, 0.2); /* Transparent white */
     -fx-background-radius: 10;
@@ -99,11 +88,79 @@
     -fx-font-size: 18px;
 }
 
-#Button5:hover {
+#tDel:hover {
     -fx-background-color: rgba(0, 0, 0, 0.4); /* More opaque on hover */
     -fx-text-fill: #ffffff;
 }
 
+#tEdit {
+    -fx-font-family: "DejaVu Serif";
+    -fx-background-color: rgba(255, 255, 255, 0.2); /* Transparent white */
+    -fx-background-radius: 10;
+    -fx-border-color: #ffffff; /* White border */
+    -fx-border-width: 2px;
+    -fx-border-radius: 10; /* Rounded corners */
+    -fx-text-fill: #ffffff; /* White text */
+    -fx-font-size: 18px;
+}
+
+#tEdit:hover {
+    -fx-background-color: rgba(0, 0, 0, 0.4); /* More opaque on hover */
+    -fx-text-fill: #ffffff;
+}
+
+#CodeAdd {
+    -fx-font-family: "DejaVu Serif";
+    -fx-background-color: rgba(255, 255, 255, 0.2); /* Transparent white */
+    -fx-background-radius: 10;
+    -fx-border-color: #ffffff; /* White border */
+    -fx-border-width: 2px;
+    -fx-border-radius: 10; /* Rounded corners */
+    -fx-text-fill: #ffffff; /* White text */
+    -fx-font-size: 18px;
+}
+
+#CodeAdd:hover {
+    -fx-background-color: rgba(0, 0, 0, 0.4); /* More opaque on hover */
+    -fx-text-fill: #ffffff;
+}
+
+
+#CodeDel {
+    -fx-font-family: "DejaVu Serif";
+    -fx-background-color: rgba(255, 255, 255, 0.2); /* Transparent white */
+    -fx-background-radius: 10;
+    -fx-border-color: #ffffff; /* White border */
+    -fx-border-width: 2px;
+    -fx-border-radius: 10; /* Rounded corners */
+    -fx-text-fill: #ffffff; /* White text */
+    -fx-font-size: 18px;
+}
+
+#CodeDel:hover {
+    -fx-background-color: rgba(0, 0, 0, 0.4); /* More opaque on hover */
+    -fx-text-fill: #ffffff;
+}
+
+
+#CodeEdit {
+    -fx-font-family: "DejaVu Serif";
+    -fx-background-color: rgba(255, 255, 255, 0.2); /* Transparent white */
+    -fx-background-radius: 10;
+    -fx-border-color: #ffffff; /* White border */
+    -fx-border-width: 2px;
+    -fx-border-radius: 10; /* Rounded corners */
+    -fx-text-fill: #ffffff; /* White text */
+    -fx-font-size: 18px;
+}
+
+#CodeEdit:hover {
+    -fx-background-color: rgba(0, 0, 0, 0.4); /* More opaque on hover */
+    -fx-text-fill: #ffffff;
+}
+
+
+/*Listviews */
 #Listview {
     -fx-border-width: 1;
     -fx-border-color: white;
@@ -111,17 +168,18 @@
     -fx-font-family: "DejaVu Serif";
     -fx-font-size: 15px;
 }
-
+/*Tableviews */
 .table-view .column-header { /*for the header mismo*/
     -fx-background-color: #3D5A80;
-    -fx-background-radius: 15;
+    -fx-background-radius: 5;
+    -fx-border-width: 10;
 }
 
 .table-view .column-header-background { /*for editing header visuals*/
-    -fx-background-color: #000000;
-    -fx-border-width: 1px;
-    -fx-border-color: #000000;
-    -fx-min-height: 60px;
+    -fx-background-color: white;
+    -fx-border-width: 2px;
+    -fx-border-color: white;
+    -fx-min-height: 55px;
 
 }
 
@@ -131,7 +189,6 @@
     -fx-background-color: transparent;
     -fx-text-fill: white;
     -fx-font-weight: bold;
-
 }
 
 .table-row-cell{
@@ -140,3 +197,168 @@
     -fx-font-family: "DejaVu Serif";
     -fx-font-size: 15px;
 }
+
+#CodOpLa {
+    -fx-font-family: "DejaVu Serif";
+    -fx-font-size: 20;
+    -fx-background-color: transparent;
+    -fx-text-fill: #E8E9ED;
+    -fx-font-weight: bold;
+}
+
+
+/*Task_Add_Edit.fmxl*/
+#TaskPromp {
+    -fx-font-family: "DejaVu Serif";
+    -fx-font-size: 30;
+    -fx-background-color: transparent;
+    -fx-text-fill: #E8E9ED;
+    -fx-font-weight: bold;
+}
+
+#cLabel {
+    -fx-font-family: "DejaVu Serif";
+    -fx-font-size: 25;
+    -fx-background-color: transparent;
+    -fx-text-fill: #E8E9ED;
+    -fx-font-weight: bold;
+}
+
+#sLabel {
+    -fx-font-family: "DejaVu Serif";
+    -fx-font-size: 25;
+    -fx-background-color: transparent;
+    -fx-text-fill: #E8E9ED;
+    -fx-font-weight: bold;
+}
+
+#aLabel {
+    -fx-font-family: "DejaVu Serif";
+    -fx-font-size: 25;
+    -fx-background-color: transparent;
+    -fx-text-fill: #E8E9ED;
+    -fx-font-weight: bold;
+}
+
+#dBut {
+    -fx-font-family: "DejaVu Serif";
+    -fx-background-color: rgba(255, 255, 255, 0.2); /* Transparent white */
+    -fx-background-radius: 10;
+    -fx-border-color: #ffffff; /* White border */
+    -fx-border-width: 2px;
+    -fx-border-radius: 10; /* Rounded corners */
+    -fx-text-fill: #ffffff; /* White text */
+    -fx-font-size: 18px;
+}
+
+#dBut:hover {
+    -fx-background-color: rgba(0, 0, 0, 0.4); /* More opaque on hover */
+    -fx-text-fill: #ffffff;
+}
+
+#cBut {
+    -fx-font-family: "DejaVu Serif";
+    -fx-background-color: rgba(255, 255, 255, 0.2); /* Transparent white */
+    -fx-background-radius: 10;
+    -fx-border-color: #ffffff; /* White border */
+    -fx-border-width: 2px;
+    -fx-border-radius: 10; /* Rounded corners */
+    -fx-text-fill: #ffffff; /* White text */
+    -fx-font-size: 18px;
+}
+
+#cBut:hover {
+    -fx-background-color: rgba(0, 0, 0, 0.4); /* More opaque on hover */
+    -fx-text-fill: #ffffff;
+}
+
+/*ConfirmationUI fmxl*/
+#AYS {
+    -fx-font-family: "DejaVu Serif";
+    -fx-font-size: 45;
+    -fx-background-color: transparent;
+    -fx-text-fill: #E8E9ED;
+    -fx-font-weight: bold;
+}
+/*Buttons*/
+#ConYes {
+    -fx-font-family: "DejaVu Serif";
+    -fx-background-color: rgba(255, 255, 255, 0.2); /* Transparent white */
+    -fx-background-radius: 10;
+    -fx-border-color: #ffffff; /* White border */
+    -fx-border-width: 2px;
+    -fx-border-radius: 10; /* Rounded corners */
+    -fx-text-fill: #ffffff; /* White text */
+    -fx-font-size: 18px;
+}
+
+#ConYes:hover {
+    -fx-background-color: rgba(0, 0, 0, 0.4); /* More opaque on hover */
+    -fx-text-fill: #ffffff;
+}
+
+#ConNo {
+    -fx-font-family: "DejaVu Serif";
+    -fx-background-color: rgba(255, 255, 255, 0.2); /* Transparent white */
+    -fx-background-radius: 10;
+    -fx-border-color: #ffffff; /* White border */
+    -fx-border-width: 2px;
+    -fx-border-radius: 10; /* Rounded corners */
+    -fx-text-fill: #ffffff; /* White text */
+    -fx-font-size: 18px;
+}
+
+#ConNo:hover {
+    -fx-background-color: rgba(0, 0, 0, 0.4); /* More opaque on hover */
+    -fx-text-fill: #ffffff;
+}
+
+/*addandeditUI.fmxl*/
+#cnLabel{
+    -fx-font-family: "DejaVu Serif";
+    -fx-font-size: 25;
+    -fx-background-color: transparent;
+    -fx-text-fill: #E8E9ED;
+    -fx-font-weight: bold;
+}
+
+#resLabel{
+    -fx-font-family: "DejaVu Serif";
+    -fx-font-size: 25;
+    -fx-background-color: transparent;
+    -fx-text-fill: #E8E9ED;
+    -fx-font-weight: bold;
+}
+
+#aneDone {
+    -fx-font-family: "DejaVu Serif";
+    -fx-background-color: rgba(255, 255, 255, 0.2); /* Transparent white */
+    -fx-background-radius: 10;
+    -fx-border-color: #ffffff; /* White border */
+    -fx-border-width: 2px;
+    -fx-border-radius: 10; /* Rounded corners */
+    -fx-text-fill: #ffffff; /* White text */
+    -fx-font-size: 18px;
+}
+
+#aneDone:hover {
+    -fx-background-color: rgba(0, 0, 0, 0.4); /* More opaque on hover */
+    -fx-text-fill: #ffffff;
+}
+
+#aneCan {
+    -fx-font-family: "DejaVu Serif";
+    -fx-background-color: rgba(255, 255, 255, 0.2); /* Transparent white */
+    -fx-background-radius: 10;
+    -fx-border-color: #ffffff; /* White border */
+    -fx-border-width: 2px;
+    -fx-border-radius: 10; /* Rounded corners */
+    -fx-text-fill: #ffffff; /* White text */
+    -fx-font-size: 18px;
+}
+
+#aneCan:hover {
+    -fx-background-color: rgba(0, 0, 0, 0.4); /* More opaque on hover */
+    -fx-text-fill: #ffffff;
+}
+

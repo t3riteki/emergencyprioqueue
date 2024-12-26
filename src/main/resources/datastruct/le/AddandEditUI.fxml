@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="AnchorP" prefHeight="400.0" prefWidth="600.0" stylesheets="@../../../styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller=" AddandEditUI">
+<AnchorPane fx:id="AnchorP" prefHeight="400.0" prefWidth="600.0" stylesheets="@../../../styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AddandEditUI">
     <children>
         <Label fx:id="cnLabel" layoutX="47.0" layoutY="74.0" prefHeight="46.0" prefWidth="183.0" text="Code Name:">
             <font>
