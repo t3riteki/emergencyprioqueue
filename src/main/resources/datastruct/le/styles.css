@@ -1,27 +1,142 @@
-/* Reference https://www.youtube.com/watch?v=H7JG947tLzo */
+/* Reference https://www.youtube.com/watch?v=H7JG947tLzo*/
+#AnchorP{
+    -fx-background-color: linear-gradient(to left, #1A1F3C, #2C3247);
+}
+.table-view { /*for teh whole table view*/
+    -fx-background-color: linear-gradient(to bottom, #1A1F3C, #2C3247);
 
-.table-view { /*for the whole table view*/
-    -fx-background-color: rgb(55, 56, 85);/*use rgb or rgba if possible*/
+}
+
+#Label1 {
+    -fx-font-family: "DejaVu Serif";
+    -fx-font-size: 45;
+    -fx-background-color: transparent;
+    -fx-text-fill: #E8E9ED;
+    -fx-font-weight: bold;
+}
+
+#Label2 {
+    -fx-font-family: "DejaVu Serif";
+    -fx-font-size: 22;
+    -fx-alignment: center;
+    -fx-background-color: #3D5A80;
+    -fx-text-fill: #E8E9ED;
+    -fx-font-weight: bold;
+    -fx-border-width: 2;
+    -fx-border-color: white;
+}
+
+#Button1 {
+    -fx-font-family: "DejaVu Serif";
+    -fx-background-color: rgba(255, 255, 255, 0.2); /* Transparent white */
+    -fx-background-radius: 10;
+    -fx-border-color: #ffffff; /* White border */
+    -fx-border-width: 2px;
+    -fx-border-radius: 10; /* Rounded corners */
+    -fx-text-fill: #ffffff; /* White text */
+    -fx-font-size: 18px;
+}
+#Button1:hover {
+    -fx-background-color: rgba(0, 0, 0, 0.4); /* More opaque on hover */
+    -fx-text-fill: #ffffff;
+}
+
+#Button2 {
+    -fx-font-family: "DejaVu Serif";
+    -fx-background-color: rgba(255, 255, 255, 0.2); /* Transparent white */
+    -fx-background-radius: 10;
+    -fx-border-color: #ffffff; /* White border */
+    -fx-border-width: 2px;
+    -fx-border-radius: 10; /* Rounded corners */
+    -fx-text-fill: #ffffff; /* White text */
+    -fx-font-size: 18px;
+}
+#Button2:hover {
+    -fx-background-color: rgba(0, 0, 0, 0.4); /* More opaque on hover */
+    -fx-text-fill: #ffffff;
+}
+
+#Button3 {
+    -fx-font-family: "DejaVu Serif";
+    -fx-background-color: rgba(255, 255, 255, 0.2); /* Transparent white */
+    -fx-background-radius: 10;
+    -fx-border-color: #ffffff; /* White border */
+    -fx-border-width: 2px;
+    -fx-border-radius: 10; /* Rounded corners */
+    -fx-text-fill: #ffffff; /* White text */
+    -fx-font-size: 18px;
+}
+
+#Button3:hover {
+    -fx-background-color: rgba(0, 0, 0, 0.4); /* More opaque on hover */
+    -fx-text-fill: #ffffff;
+}
+
+#Button4 {
+    -fx-font-family: "DejaVu Serif";
+    -fx-background-color: rgba(255, 255, 255, 0.2); /* Transparent white */
+    -fx-background-radius: 10;
+    -fx-border-color: #ffffff; /* White border */
+    -fx-border-width: 2px;
+    -fx-border-radius: 10; /* Rounded corners */
+    -fx-text-fill: #ffffff; /* White text */
+    -fx-font-size: 18px;
+}
+
+#Button4:hover {
+    -fx-background-color: rgba(0, 0, 0, 0.4); /* More opaque on hover */
+    -fx-text-fill: #ffffff;
+}
+
+#Button5 {
+    -fx-font-family: "DejaVu Serif";
+    -fx-background-color: rgba(255, 255, 255, 0.2); /* Transparent white */
+    -fx-background-radius: 10;
+    -fx-border-color: #ffffff; /* White border */
+    -fx-border-width: 2px;
+    -fx-border-radius: 10; /* Rounded corners */
+    -fx-text-fill: #ffffff; /* White text */
+    -fx-font-size: 18px;
+}
+
+#Button5:hover {
+    -fx-background-color: rgba(0, 0, 0, 0.4); /* More opaque on hover */
+    -fx-text-fill: #ffffff;
+}
+
+#Listview {
+    -fx-border-width: 1;
+    -fx-border-color: white;
+    -fx-background-color: #23637f;
+    -fx-font-family: "DejaVu Serif";
+    -fx-font-size: 15px;
 }
 
 .table-view .column-header { /*for the header mismo*/
-    -fx-background-color: rgba(55, 56, 85, 0.342);
+    -fx-background-color: #3D5A80;
+    -fx-background-radius: 15;
 }
 
 .table-view .column-header-background { /*for editing header visuals*/
-    -fx-background-color: transparent;
+    -fx-background-color: #000000;
     -fx-border-width: 1px;
-    -fx-border-color:  transparent transparent rgb(97, 140, 196) transparent;
+    -fx-border-color: #000000;
+    -fx-min-height: 60px;
+
 }
 
 .table-view .column-header-background .label{ /* text sa header*/
-    -fx-background-color: linear-gradient(white, black)  ;
+    -fx-font-family: "DejaVu Serif";
+    -fx-font-size: 16;
+    -fx-background-color: transparent;
     -fx-text-fill: white;
     -fx-font-weight: bold;
+
 }
 
 .table-row-cell{
     -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-family: "DejaVu Serif";
+    -fx-font-size: 15px;
 }
-
-
