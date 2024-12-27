@@ -5,12 +5,6 @@
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
 }
-.table-view { /*for teh whole table view*/
-    -fx-background-color: linear-gradient(to bottom, #1A1F3C, #2C3247);
-    -fx-border-width: 1;
-    -fx-border-color: white;
-
-}
 
 #tvMain {
     -fx-font-family: "DejaVu Serif";
@@ -167,19 +161,29 @@
     -fx-background-color: #23637f;
     -fx-font-family: "DejaVu Serif";
     -fx-font-size: 15px;
+    -fx-padding: 0px;
 }
+
 /*Tableviews */
+
+.table-view { /*for teh whole table view*/
+    -fx-background-color: linear-gradient(to bottom, rgb(26, 31, 60), rgb(44, 50, 71));
+    -fx-border-width: 1;
+    -fx-border-color: white;
+
+}
+
 .table-view .column-header { /*for the header mismo*/
     -fx-background-color: #3D5A80;
-    -fx-background-radius: 5;
-    -fx-border-width: 10;
+    -fx-background-radius: 3;
+    -fx-border-width: 5;
 }
 
 .table-view .column-header-background { /*for editing header visuals*/
     -fx-background-color: white;
     -fx-border-width: 2px;
     -fx-border-color: white;
-    -fx-min-height: 55px;
+    -fx-min-height: 40px;
 
 }
 
@@ -193,12 +197,21 @@
 
 .table-row-cell{
     -fx-background-color: transparent;
-    -fx-text-fill: white;
-    -fx-font-family: "DejaVu Serif";
-    -fx-font-size: 15px;
+}
+.table-row-cell:odd{
+    -fx-background-color: rgba(76, 83, 107, 0.288);
+    
 }
 
-#CodOpLa {
+.table-view .table-cell{
+    -fx-text-fill: rgb(206, 255, 244);
+    -fx-font-family: "DejaVu Serif";
+    -fx-font-size: 15px;
+
+}
+
+
+#CodOpLa{
     -fx-font-family: "DejaVu Serif";
     -fx-font-size: 20;
     -fx-background-color: transparent;

@@ -12,9 +12,9 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="AnchorP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="AnchorP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="datastruct.le.TaskViewController">
     <children>
-        <TableView layoutX="-5.0" layoutY="178.0" prefHeight="700.0" prefWidth="1505.0" stylesheets="@styles.css">
+        <TableView fx:id="tableView" layoutX="-5.0" layoutY="178.0" prefHeight="700.0" prefWidth="1502.0" stylesheets="@styles.css">
             <columns>
                 <TableColumn fx:id="taskCol" prefWidth="250.0" text="TASK ID" />
                 <TableColumn fx:id="codeCol" prefWidth="250.0" text="CODES" />
@@ -31,8 +31,8 @@
         </Label>
         <Button fx:id="SaveB" layoutX="23.0" layoutY="115.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="207.0" text="Save" textAlignment="JUSTIFY" />
         <Button fx:id="LoadB" layoutX="281.0" layoutY="115.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="207.0" text="Load" textAlignment="JUSTIFY" />
-        <ListView fx:id="Listview" fixedCellSize="10.0" layoutX="1495.0" layoutY="216.0" prefHeight="662.0" prefWidth="405.0" />
-        <Label fx:id="codeLab" layoutX="1496.0" layoutY="167.0" prefHeight="55.0" prefWidth="405.0" text="CODES" textAlignment="JUSTIFY">
+        <ListView fx:id="Listview" fixedCellSize="10.0" layoutX="1497.0" layoutY="213.0" prefHeight="665.0" prefWidth="403.0" />
+        <Label fx:id="codeLab" layoutX="1496.0" layoutY="175.0" prefHeight="40.0" prefWidth="405.0" text="CODES" textAlignment="JUSTIFY">
             <font>
                 <Font name="System Bold" size="13.0" />
             </font>

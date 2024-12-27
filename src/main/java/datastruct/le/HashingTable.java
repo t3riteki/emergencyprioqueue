@@ -1,4 +1,4 @@
-package  gab.branch;
+package  datastruct.le;
 import java.util.LinkedList;
 
 public class hashingTable {
@@ -92,19 +92,37 @@ public class hashingTable {
         System.out.println("Value not Found");
     }
 
-    public String search(Code code){
+    public Code search(Code code){
         for(int i = 0 ; i < HTable.length; i++){
             int tableIndex = (getHashvalue(code) + i) % HTable.length;
             LinkedList<Code> nodeList = HTable[tableIndex];
             if(HTable[tableIndex] !=null){
                 for(Code c : nodeList){
                     if (c.getCode() == code.getCode()) {
-                        return "[" + tableIndex + "] Found:" + c.toString();
+                        return c;
                     }
                 }
             }
         }
-        return "Value not found!";
+        return null;
+    }
+
+    public String resourceLookUp(String code){
+        for(int i = 0 ; i < HTable.length; i++){
+
+            int hashVal = (code.hashCode() & 0x7fffffff)/2;
+            int tableIndex = (hashVal + i) % HTable.length;
+
+            LinkedList<Code> nodeList = HTable[tableIndex];
+            if(HTable[tableIndex] !=null){
+                for(Code c : nodeList){
+                    if (c.getCode() == code) {
+                        return c.getResources();
+                    }
+                }
+            }
+        }
+        return "Null";
     }
 
     public void display(){

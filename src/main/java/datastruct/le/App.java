@@ -8,12 +8,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-/**
- * JavaFX App
- */
 public class App extends Application {
 
     private static Scene scene;
+
+    // Main Data structures
+    public static hashingTable codeTable;
+    public static MaxHeap taskHeap;
+
+    public static FileIO fileHandler; // Handler
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -31,8 +34,15 @@ public class App extends Application {
         return fxmlLoader.load();
     }
 
+
     public static void main(String[] args) {
+
+        codeTable = new hashingTable();
+        taskHeap = new MaxHeap();
+
         launch();
     }
+
+
 
 }

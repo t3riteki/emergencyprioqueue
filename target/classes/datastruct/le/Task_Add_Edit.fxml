@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="AnchorP" prefHeight="600.0" prefWidth="400.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TaskAddEdit">
+<AnchorPane fx:id="AnchorP" prefHeight="600.0" prefWidth="400.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="datastruct.le.TaskAddEdit">
     <children>
         <Line endX="101.0" layoutX="499.0" layoutY="60.0" startX="-499.0" stroke="WHITE" />
         <Label fx:id="TaskPromp" layoutX="24.0" layoutY="14.0" text="TASK PROMPT">
@@ -17,14 +17,14 @@
                 <Font name="System Bold" size="24.0" />
             </font>
         </Label>
-        <ComboBox layoutX="264.0" layoutY="144.0" prefHeight="35.0" prefWidth="231.0" />
-        <Spinner layoutX="264.0" layoutY="203.0" prefHeight="35.0" prefWidth="231.0" />
+        <ComboBox fx:id="codeComboBox" layoutX="264.0" layoutY="144.0" prefHeight="35.0" prefWidth="231.0" />
+        <Spinner fx:id="severitySpinner" layoutX="264.0" layoutY="203.0" prefHeight="35.0" prefWidth="231.0" />
         <Label fx:id="aLabel" layoutX="119.0" layoutY="263.0" text="Address:">
             <font>
                 <Font name="System Bold" size="24.0" />
             </font>
         </Label>
-        <TextField layoutX="264.0" layoutY="263.0" prefHeight="151.0" prefWidth="231.0" />
+        <TextField fx:id="addressField" layoutX="264.0" layoutY="263.0" prefHeight="151.0" prefWidth="231.0" />
         <Button fx:id="dBut" layoutX="104.0" layoutY="466.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Done">
             <font>
                 <Font name="System Bold" size="20.0" />

@@ -1,11 +1,17 @@
 package datastruct.le;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class TaskAddEdit {
     @FXML
@@ -44,13 +50,13 @@ public class TaskAddEdit {
     public void initialize() {
         // Initialize code ComboBox with sample values
         ObservableList<String> codes = FXCollections.observableArrayList(
-                "Code A", "Code B", "Code C", "Code D"
+                "Fire", "Theft", "Murder", "Hostage", "Shooting", "Building Collapse", "Rescue Situation", "Animal Emergencies"
         );
         codeComboBox.setItems(codes);
 
         // Initialize severity Spinner (1-5 scale)
         SpinnerValueFactory<Integer> valueFactory =
-                new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 5, 1);
+                new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10, 1);
         severitySpinner.setValueFactory(valueFactory);
 
         // Set up button handlers
@@ -108,6 +114,7 @@ public class TaskAddEdit {
 
 
     // Getters for form data
+
     public String getCode() {
         return codeComboBox.getValue();
     }

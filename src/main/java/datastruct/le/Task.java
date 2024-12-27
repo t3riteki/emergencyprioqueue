@@ -2,9 +2,10 @@ package datastruct.le;
 
 public class Task implements Comparable<Task>{
     private String code, address;
-    private int prioLevel, pubtime, severity;
+    private int prioLevel, pubtime, severity, taskID;
 
-    public Task (String code, String address, int currtime, int severity){
+    public Task (int taskID, String code, String address, int currtime, int severity){
+        this.taskID = taskID;
         this.code = code; 
         this.address = address;
         this.pubtime = currtime;
@@ -20,6 +21,9 @@ public class Task implements Comparable<Task>{
     }
 
 //------------------------------Getters------------------------------//
+    public int getTaskID() {
+        return taskID;
+    }
 
     public String getCode() {
         return code;
@@ -29,7 +33,7 @@ public class Task implements Comparable<Task>{
         return prioLevel;
     }
 
-    public int getDatetime() {
+    public int getPubtime() {
         return pubtime;
     }
 
@@ -43,6 +47,9 @@ public class Task implements Comparable<Task>{
     }
 
 //------------------------------Setters------------------------------//
+    public void setTaskID(int taskID) {
+        this.taskID = taskID;
+    }
 
     public void setAddress(String address) {
         this.address = address;
@@ -52,7 +59,7 @@ public class Task implements Comparable<Task>{
         this.code = code;
     }
 
-    public void setDatetime(int datetime) {
+    public void setPubtime(int datetime) {
         this.pubtime = datetime;
     }
 

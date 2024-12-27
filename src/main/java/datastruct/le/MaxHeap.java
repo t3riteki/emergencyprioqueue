@@ -2,6 +2,7 @@ package datastruct.le;
 
 // Reference and Templated from https://www.geeksforgeeks.org/max-heap-in-java/ big thanks, big thanks
 
+
 public class MaxHeap {
     private Task[] taskHeap;
     private int currentSize;
@@ -24,7 +25,9 @@ public class MaxHeap {
     }
 
     public Task[] getTaskHeap() {
-        return taskHeap;
+        Task[] minimizedHeap = new Task[currentSize];
+        System.arraycopy(this.taskHeap, 0, minimizedHeap, 0, currentSize);
+        return minimizedHeap;
     }
 
     public int getMaxSize() {
@@ -79,6 +82,7 @@ public class MaxHeap {
  
     public void insert(Task element)
     {
+        element.setTaskID(currentSize + 1);
         taskHeap[currentSize] = element;
  
         // Traverse up and fix violated property
@@ -119,6 +123,24 @@ public class MaxHeap {
  
             System.out.println(); // for new line
         }
+    }
+
+    public String localResourceLookUp(String code){
+        String necResource;
+
+        switch (code) {
+            case "Fire": necResource = "Firefighters, Paramedics "; break;
+            case "Theft": necResource = "Police"; break;
+            case "Murder": necResource = "Police, Paramedics"; break;
+            case "Hostage": necResource = "Police"; break;
+            case "Shooting": necResource = "Police, Paramedics"; break;
+            case "Building Collapse": necResource = "Firefighters, Paramedics, Rescuers"; break;
+            case "Rescue Situation": necResource = "Rescuers, paramedics"; break;
+            case "Animal Emergencies": necResource = "Firefighters, Emergency Veterinarians"; break;
+            default: necResource = "Null "; break;
+        }
+
+        return necResource;
     }
 
     //--------------------------------Traversal--------------------------------//

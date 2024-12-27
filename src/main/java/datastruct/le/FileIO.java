@@ -42,7 +42,7 @@ public class FileIO {
 
             for(int i = 0; i < heap.getCurrentSize(); i ++){
                 Task t = currHeap[i];
-                writer.write(t.getCode() + "," + t.getAddress() + "," + t.getDatetime() + "," + t.getSeverity());
+                writer.write(t.getTaskID()+ "," + t.getCode() + "," + t.getAddress() + "," + t.getPubtime() + "," + t.getSeverity());
                 writer.newLine();
             }
             writer.close();
@@ -90,7 +90,7 @@ public class FileIO {
             String out;
             while((out = reader.readLine()) != null){
                 String[] data = out.split(",");
-                curr.insert(new Task(data[0], data[1], Integer.parseInt(data[2]), Integer.parseInt(data[3])));
+                curr.insert(new Task(Integer.parseInt(data[0]), data[1], data[2], Integer.parseInt(data[3]), Integer.parseInt(data[4])));
             }
             reader.close();
         } catch (IOException e) {
