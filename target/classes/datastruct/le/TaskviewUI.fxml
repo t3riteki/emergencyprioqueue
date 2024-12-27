@@ -31,7 +31,7 @@
         </Label>
         <Button fx:id="SaveB" layoutX="23.0" layoutY="115.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="207.0" text="Save" textAlignment="JUSTIFY" />
         <Button fx:id="LoadB" layoutX="281.0" layoutY="115.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="207.0" text="Load" textAlignment="JUSTIFY" />
-        <ListView fx:id="Listview" fixedCellSize="10.0" layoutX="1497.0" layoutY="213.0" prefHeight="665.0" prefWidth="403.0" />
+        <ListView fx:id="Listview" fixedCellSize="40.0" layoutX="1497.0" layoutY="213.0" prefHeight="665.0" prefWidth="403.0" />
         <Label fx:id="codeLab" layoutX="1496.0" layoutY="175.0" prefHeight="40.0" prefWidth="405.0" text="CODES" textAlignment="JUSTIFY">
             <font>
                 <Font name="System Bold" size="13.0" />
@@ -42,19 +42,15 @@
         <Button fx:id="tEdit" layoutX="575.0" layoutY="927.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="207.0" text="Edit" textAlignment="JUSTIFY" />
       <ImageView fitHeight="108.0" fitWidth="108.0" layoutX="1590.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@usep-removebg-preview.png" />
+            <Image url="@images/usep-removebg-preview.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="108.0" fitWidth="108.0" layoutX="1736.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@saddd-removebg-preview.png" />
+            <Image url="@images/saddd-removebg-preview.png" />
          </image>
       </ImageView>
-      <Line endX="17.0" endY="-78.0" layoutX="1478.0" layoutY="956.0" startX="17.0" startY="124.0" stroke="WHITE" />
-      <Label fx:id="CodOpLa" layoutX="1517.0" layoutY="891.0" prefHeight="55.0" prefWidth="162.0" text="Code Options:" />
-      <Button fx:id="CodeAdd" layoutX="1529.0" layoutY="949.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Add" textAlignment="JUSTIFY" />
-      <Button fx:id="CodeEdit" layoutX="1715.0" layoutY="949.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Edit" textAlignment="JUSTIFY" />
-      <Button fx:id="CodeDel" layoutX="1623.0" layoutY="1011.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Delete" textAlignment="JUSTIFY" />
+      <Line endX="19.0" endY="-78.0" layoutX="1478.0" layoutY="956.0" startX="19.0" startY="124.0" stroke="WHITE" />
     </children>
    <stylesheets>
       <URL value="@../../../styles.css" />

@@ -159,10 +159,21 @@
     -fx-border-width: 1;
     -fx-border-color: white;
     -fx-background-color: #23637f;
-    -fx-font-family: "DejaVu Serif";
-    -fx-font-size: 15px;
-    -fx-padding: 0px;
 }
+
+.list-cell{
+    -fx-padding: 10px; /* Adds internal spacing */
+    -fx-min-height: 40px; /* Minimum height for rows */
+    -fx-pref-height: 40px; /* Preferred height for rows */
+    -fx-border-width: 1;
+    -fx-font-size: 15px;
+    -fx-text-fill: white;
+    -fx-border-color: white;
+    -fx-background-color: transparent;
+    -fx-font-family: "DejaVu Serif";
+    -fx-alignment: center-left; /* Align text to the left */
+}
+
 
 /*Tableviews */
 
@@ -189,17 +200,20 @@
 
 .table-view .column-header-background .label{ /* text sa header*/
     -fx-font-family: "DejaVu Serif";
-    -fx-font-size: 16;
+    -fx-font-size: 16px;
     -fx-background-color: transparent;
     -fx-text-fill: white;
     -fx-font-weight: bold;
 }
 
 .table-row-cell{
-    -fx-background-color: transparent;
+    -fx-background-color: transparent; 
+    -fx-wrap-text: true;
+    -fx-alignment: top-left; 
 }
 .table-row-cell:odd{
     -fx-background-color: rgba(76, 83, 107, 0.288);
+   
     
 }
 
@@ -207,6 +221,7 @@
     -fx-text-fill: rgb(206, 255, 244);
     -fx-font-family: "DejaVu Serif";
     -fx-font-size: 15px;
+    -fx-max-width: 100px;
 
 }
 

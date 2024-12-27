@@ -1,6 +1,9 @@
 package  datastruct.le;
 import java.util.LinkedList;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 public class hashingTable {
     
     private LinkedList<Code>[] HTable;
@@ -112,17 +115,31 @@ public class hashingTable {
 
             int hashVal = (code.hashCode() & 0x7fffffff)/2;
             int tableIndex = (hashVal + i) % HTable.length;
-
             LinkedList<Code> nodeList = HTable[tableIndex];
             if(HTable[tableIndex] !=null){
                 for(Code c : nodeList){
-                    if (c.getCode() == code) {
+                    if (c.getCode().equals(code)) {
                         return c.getResources();
                     }
                 }
             }
         }
         return "Null";
+    }
+
+    public ObservableList<String> toObservableList() {
+        System.out.println("Using toObservableList");
+        ObservableList<String> codes = FXCollections.observableArrayList();
+        for (LinkedList<Code> nodeList : HTable) {
+            if (nodeList != null) {
+                for(Code c: nodeList){
+                    System.out.println(c.getCode());
+                    codes.add(c.getCode());
+                } 
+            }
+        }
+        System.out.println("Codes: "+ codes.toString());
+        return codes;
     }
 
     public void display(){

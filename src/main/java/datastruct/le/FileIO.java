@@ -15,7 +15,7 @@ public class FileIO {
     public void saveCode(hashingTable hash) {
         System.out.println("Saving Table to: code.csv \n");
         try {
-            writer = new BufferedWriter(new FileWriter("src/main/FileIO/codes.csv"));
+            writer = new BufferedWriter(new FileWriter("FileIO\\code.csv"));
             LinkedList<Code>[] codeTable = hash.getHTable();
 
             for(int i = 0 ; i < codeTable.length; i ++){
@@ -37,7 +37,7 @@ public class FileIO {
     public void saveHeap(MaxHeap heap){
         System.out.println("Saving Heap to: heap.csv \n");
         try {
-            writer = new BufferedWriter(new FileWriter("src/main/FileIO/heap.csv"));
+            writer = new BufferedWriter(new FileWriter("FileIO\\heap.csv"));
             Task[] currHeap = heap.getTaskHeap();
 
             for(int i = 0; i < heap.getCurrentSize(); i ++){
@@ -56,7 +56,7 @@ public class FileIO {
         System.out.println("Loading Table: code.csv \n");
         hashingTable curr = new hashingTable();
         try {
-            reader = new BufferedReader(new FileReader("src/main/FileIO/codes.csv"));
+            reader = new BufferedReader(new FileReader("FileIO\\code.csv"));
             String out;
             while((out = reader.readLine()) != null){
                 // System.out.println(out);
@@ -86,12 +86,14 @@ public class FileIO {
         System.out.println("Loading Heap: heap.csv \n");
         MaxHeap curr = new MaxHeap();
         try {
-            reader = new BufferedReader(new FileReader("src/main/FileIO/heap.csv"));
+            reader = new BufferedReader(new FileReader("FileIO\\heap.csv"));
             String out;
             while((out = reader.readLine()) != null){
                 String[] data = out.split(",");
+                System.out.println(data[0]);
                 curr.insert(new Task(Integer.parseInt(data[0]), data[1], data[2], Integer.parseInt(data[3]), Integer.parseInt(data[4])));
             }
+            System.out.println("Loaded Heap: " + curr.toString());
             reader.close();
         } catch (IOException e) {
             e.printStackTrace();        

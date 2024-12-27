@@ -4,7 +4,7 @@ public class resourceManager {
     hashingTable hTable;
 
     public resourceManager(){
-        hTable = new hashingTable();
+        hTable = new hashingTable(10);
 
         hTable.insert_QuadraticProbe(new Code("Fire","Firefighters, Paramedics" ));
         hTable.insert_QuadraticProbe(new Code("Theft","Police" ));

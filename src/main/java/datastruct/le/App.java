@@ -41,6 +41,7 @@ public class App extends Application {
         codeTable = new hashingTable();
         taskHeap = new MaxHeap();
         rm = new resourceManager();
+        fileHandler = new FileIO();
 
         launch();
     }

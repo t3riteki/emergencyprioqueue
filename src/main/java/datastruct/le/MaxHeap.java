@@ -26,7 +26,7 @@ public class MaxHeap {
 
     public Task[] getTaskHeap() {
         Task[] minimizedHeap = new Task[currentSize];
-        System.arraycopy(this.taskHeap, 0, minimizedHeap, 0, currentSize);
+        System.arraycopy(this.taskHeap, 0, minimizedHeap, 0, currentSize); 
         return minimizedHeap;
     }
 
@@ -60,29 +60,34 @@ public class MaxHeap {
         taskHeap[spos] = tmp;
     }
  
-    private void maxHeapify(int pos)
+    public void maxHeapify(int pos)
     {
-        if (isLeaf(pos))
+        if (isLeaf(pos)) {
             return;
- 
-        if (taskHeap[pos].getPrioLevel() < taskHeap[leftChild(pos)].getPrioLevel()
-            || taskHeap[pos].getPrioLevel() < taskHeap[rightChild(pos)].getPrioLevel()) {
- 
-            if (taskHeap[leftChild(pos)].getPrioLevel()
-                > taskHeap[rightChild(pos)].getPrioLevel()) {
-                swap(pos, leftChild(pos));
-                maxHeapify(leftChild(pos));
-            }
-            else {
-                swap(pos, rightChild(pos));
-                maxHeapify(rightChild(pos));
-            }
+        }
+    
+        int left = leftChild(pos);
+        int right = rightChild(pos);
+        int largest = pos;
+    
+        if (left < currentSize && taskHeap[left].getPrioLevel() > taskHeap[largest].getPrioLevel()) {
+            largest = left;
+        }
+    
+        if (right < currentSize && taskHeap[right].getPrioLevel() > taskHeap[largest].getPrioLevel()) {
+            largest = right;
+        }
+    
+        if (largest != pos) {
+            swap(pos, largest);
+            maxHeapify(largest);
         }
     }
  
     public void insert(Task element)
     {
-        element.setTaskID(currentSize + 1);
+        if (element.getTaskID() == 0) element.setTaskID(currentSize + 1);
+
         taskHeap[currentSize] = element;
  
         // Traverse up and fix violated property
@@ -92,6 +97,26 @@ public class MaxHeap {
             current = parent(current);
         }
         currentSize++;
+    }
+
+    public boolean remove(Task element) {
+        for (int i = 0; i < currentSize; i++) {
+            if (taskHeap[i].equals(element)) { 
+                swap(i, currentSize - 1);
+                currentSize--; 
+                maxHeapify(i); 
+                if (i > 0) {
+                    int parentIndex = parent(i);
+                    while (i > 0 && taskHeap[i].getPrioLevel() > taskHeap[parentIndex].getPrioLevel()) {
+                        swap(i, parentIndex);
+                        i = parentIndex;
+                        parentIndex = parent(i);
+                    }
+                }
+                return true; 
+            }
+        }
+        return false;
     }
  
     public Task extractMax()
@@ -130,7 +155,7 @@ public class MaxHeap {
     public String toString(){
         String str = "";
         for (int i = 0 ; i < currentSize ; i++)
-            str += taskHeap[i].getPrioLevel() + " ";
+            str += "{" + taskHeap[i].getTaskID() + ", " + taskHeap[i].getCode()+ ", " + taskHeap[i].getAddress()+ ", " + taskHeap[i].getPubtime() + ", " + taskHeap[i].getSeverity()+ ", " + taskHeap[i].getPrioLevel() + "} " ;
         return str;
     }
 }

@@ -5,7 +5,6 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
-import java.util.LinkedList;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -15,12 +14,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class TaskViewController {
@@ -35,32 +37,26 @@ public class TaskViewController {
 
     @FXML private ListView<String> Listview; // Important
 
-    @FXML private Label tvMain;
-    @FXML private Label codeLab;
-    @FXML private Label CodOpLa;
-
     @FXML private Button SaveB;
     @FXML private Button LoadB;
     @FXML private Button tAdd;
     @FXML private Button tDel;
     @FXML private Button tEdit;
-    @FXML private Button CodeAdd;
-    @FXML private Button CodeEdit;
-    @FXML private Button CodeDel;
     
-    private ObservableList<LinkedList> codes;
+    private ObservableList<String> codes;
     private ObservableList<Task> tasks;
 
     @FXML
     public void initialize() {
-        // Initialize Observable Lists with App's Data Structures
-        // codes = FXCollections.observableArrayList(App.codeTable.getHTable()); Discontinued feature: #future project addition, user identified codes
-
         tasks = FXCollections.observableArrayList(App.taskHeap.getTaskHeap());
         tableView.setItems(tasks);
 
-        // Initialize TableView columns with proper Task properties
+        codes = FXCollections.observableArrayList(App.rm.hTable.toObservableList());
+        System.out.println(codes.toString());
+        Listview.setItems(codes);
+       
         taskCol.setCellValueFactory(new PropertyValueFactory<>("taskID"));
+
         codeCol.setCellValueFactory(new PropertyValueFactory<>("code"));
 
         resourceCol.setCellValueFactory(cellData ->{
@@ -73,36 +69,43 @@ public class TaskViewController {
         });
 
         addCol.setCellValueFactory(new PropertyValueFactory<>("address"));
+
         timeCol.setCellValueFactory(cellData -> {
-        Task task = cellData.getValue();
-        LocalDateTime dateTime = LocalDateTime.ofEpochSecond(task.getPubtime(), 0, ZoneId.systemDefault().getRules().getOffset(Instant.now()));
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        return new SimpleStringProperty(dateTime.format(formatter));
-});
+            Task task = cellData.getValue();
+            LocalDateTime dateTime = LocalDateTime.ofEpochSecond(task.getPubtime(), 0, ZoneId.systemDefault().getRules().getOffset(Instant.now()));
+
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            return new SimpleStringProperty(dateTime.format(formatter));
+        });
         prioCol.setCellValueFactory(new PropertyValueFactory<>("prioLevel"));
 
-        // Set up button handlers
+        tableView.setRowFactory(tv -> new TableRow<Task>() {
+        @Override
+        protected void updateItem(Task item, boolean empty) {
+            super.updateItem(item, empty);
+            if (item == null || empty) {
+                setPrefHeight(Control.USE_COMPUTED_SIZE);
+            } else {
+                // Calculate the height based on content
+                String text = item.getResources(); // This assumes 'resources' is a column in your Task class
+                Text helper = new Text(text);
+                helper.setWrappingWidth(resourceCol.getWidth() - 10); // Account for padding
+                helper.setFont(getFont());
+                double requiredHeight = helper.getLayoutBounds().getHeight();
+                setPrefHeight(requiredHeight + 20); // Add some padding
+            }
+        }
+    });
+
         setupButtonHandlers();
-
-        // // Add table selection listener
-        // tableView.getSelectionModel().selectedItemProperty().addListener(
-        //         (ObservableValue<? extends Task> observable, Task oldValue, Task newValue) -> updateButtonStates());
-
-        // // Add list selection listener
-        // Listview.getSelectionModel().selectedItemProperty().addListener(
-        //         (ObservableValue<? extends String> observable, String oldValue, String newValue) -> updateCodeButtonStates());
     }
 
-
     private void setupButtonHandlers() {
-        // SaveB.setOnAction(event -> handleSave());
-        // LoadB.setOnAction(event -> handleLoad());
+        SaveB.setOnAction(event -> handleSave());
+        LoadB.setOnAction(event -> handleLoad());
         tAdd.setOnAction(event -> handleTaskAdd());
         tDel.setOnAction(event -> handleTaskDelete());
         tEdit.setOnAction(event -> handleTaskEdit());
-        // CodeAdd.setOnAction(event -> handleCodeAdd());
-        // CodeEdit.setOnAction(event -> handleCodeEdit());
-        // CodeDel.setOnAction(event -> handleCodeDelete());
     }
 
     public void updateTasks(){
@@ -123,7 +126,6 @@ public class TaskViewController {
             dialogStage.showAndWait();
 
             if (controller.isSaveClicked()) {
-                // Create new Task with current time
                 int currentTime = (int) (System.currentTimeMillis() / 1000); // Current time in seconds
                 System.out.println("Current Time: " + currentTime);
                 Task newTask = new Task(
@@ -133,8 +135,6 @@ public class TaskViewController {
                         currentTime,
                         controller.getSeverity());
 
-                // Add to both table and heap
-                tasks.add(newTask);
                 App.taskHeap.insert(newTask);
                 App.taskHeap.display();
                 updateTableView();
@@ -147,171 +147,130 @@ public class TaskViewController {
 
     private void handleTaskEdit() {
         System.out.println("Using Edit Task");
-
         Task selectedTask = tableView.getSelectionModel().getSelectedItem();
+        System.out.println("Selected Task"+selectedTask.toString());
+        try {
+            // Load the TaskAddEdit.fxml
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Task_Add_Edit.fxml"));
+            AnchorPane page = loader.load();
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Edit Task");
+            dialogStage.setScene(new Scene(page));
 
+            
+            TaskAddEdit controller = loader.getController();
 
+            controller.setCode(selectedTask.getCode());
+            controller.setAddress(selectedTask.getAddress());
+            controller.setSeverity(selectedTask.getSeverity());
 
-    //     if (selectedTask != null) {
-    //         try {
-    //             FXMLLoader loader = new FXMLLoader(getClass().getResource("TaskAddEdit.fxml"));
-    //             AnchorPane page = loader.load();
-    //             Stage dialogStage = new Stage();
-    //             dialogStage.setTitle("Edit Task");
-    //             dialogStage.setScene(new Scene(page));
+            dialogStage.showAndWait();
 
-    //             TaskAddEdit controller = loader.getController();
-    //             // Set existing values
-    //             controller.setCode(selectedTask.getCode());
-    //             controller.setAddress(selectedTask.getAddress());
-    //             controller.setSeverity(selectedTask.getSeverity());
+            if (controller.isSaveClicked()) {
+                Task copy = new Task(selectedTask);
+                copy.setCode(controller.getCode());
+                copy.setAddress(controller.getAddress());
+                copy.setSeverity(controller.getSeverity());
+                copy.setPrioLevel(copy.calculatePriority(copy.getSeverity(), copy.getPubtime()));
+                
+                App.taskHeap.remove(selectedTask);
+                App.taskHeap.insert(copy);
 
-    //             dialogStage.showAndWait();
-
-    //             if (controller.isSaveClicked()) {
-    //                 // Update task with new values
-    //                 selectedTask.setCode(controller.getCode());
-    //                 selectedTask.setAddress(controller.getAddress());
-    //                 selectedTask.setSeverity(controller.getSeverity());
-
-    //                 // Rebuild heap with updated values
-    //                 rebuildHeap();
-    //                 updateTableView();
-    //             }
-    //         } catch (IOException e) {
-    //             e.printStackTrace();
-    //             showAlert(Alert.AlertType.ERROR, "Error", "Could not load the dialog window.");
-    //         }
-    //     }
+                updateTableView();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Error", "Could not load the dialog window.");
+        }
     }
 
     private void handleTaskDelete() {
         System.out.println("Using Remove Task");
         Task selectedTask = tableView.getSelectionModel().getSelectedItem();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ConfirmationUI.fxml"));
+            AnchorPane page = loader.load();
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Delete Item?");
+            dialogStage.setScene(new Scene(page));
 
+            ConfirmationUI controller = loader.getController();
 
+            dialogStage.showAndWait();
 
-    //     if (selectedTask != null) {
-    //         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-    //         alert.setTitle("Delete Task");
-    //         alert.setHeaderText("Delete Confirmation");
-    //         alert.setContentText("Are you sure you want to delete this task?");
-
-    //         if (alert.showAndWait().get() == ButtonType.OK) {
-    //             tasks.remove(selectedTask);
-    //             rebuildHeap();
-    //             updateTableView();
-    //         }
-    //     }
+            if (controller.getResult()) {
+                App.taskHeap.remove(selectedTask);
+                updateTableView();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Error", "Could not load the dialog window.");
+        }
     }
 
-    // private void handleCodeAdd() {
-    //     TextInputDialog dialog = new TextInputDialog();
+    private void handleSave() {
+        System.out.println("Using Save Task Heap");
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ConfirmationUI.fxml"));
+            AnchorPane page = loader.load();
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Save File");
+            dialogStage.setScene(new Scene(page));
 
+            ConfirmationUI controller = loader.getController();
 
+            dialogStage.showAndWait();
 
-    //     dialog.setTitle("Add Code");
-    //     dialog.setHeaderText("Add New Code");
-    //     dialog.setContentText("Enter new code:");
+            if (controller.getResult()) {
+                App.fileHandler.saveHeap(App.taskHeap);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Error", "Could not load the dialog window.");
+        }
+    }
 
-    //     dialog.showAndWait().ifPresent(code -> {
-    //         if (!code.trim().isEmpty() && !codes.contains(code)) {
-    //             codes.add(code);
-    //         }
-    //     });
-    // }
+    private void handleLoad() {
+        System.out.println("Using Load Task Heap");
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ConfirmationUI.fxml"));
+            AnchorPane page = loader.load();
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Save File");
+            dialogStage.setScene(new Scene(page));
 
-    // private void handleCodeEdit() {
-    //     String selectedCode = Listview.getSelectionModel().getSelectedItem();
-    //     if (selectedCode != null) {
-    //         TextInputDialog dialog = new TextInputDialog(selectedCode);
-    //         dialog.setTitle("Edit Code");
-    //         dialog.setHeaderText("Edit Code");
-    //         dialog.setContentText("Enter new code value:");
+            ConfirmationUI controller = loader.getController();
 
-    //         dialog.showAndWait().ifPresent(newCode -> {
-    //             if (!newCode.trim().isEmpty() && !codes.contains(newCode)) {
-    //                 int index = codes.indexOf(selectedCode);
-    //                 codes.set(index, newCode);
-    //             }
-    //         });
-    //     }
-    // }
+            dialogStage.showAndWait();
 
-    // private void handleCodeDelete() {
-    //     String selectedCode = Listview.getSelectionModel().getSelectedItem();
-    //     if (selectedCode != null) {
-    //         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-    //         alert.setTitle("Delete Code");
-    //         alert.setHeaderText("Delete Confirmation");
-    //         alert.setContentText("Are you sure you want to delete this code?");
+            if (controller.getResult()) {
+                App.taskHeap = App.fileHandler.loadHeap();
+                System.out.println("Loaded Tasks: " + App.taskHeap.toString());
+                updateTableView();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Error", "Could not load the dialog window.");
+        }
 
-    //         if (alert.showAndWait().get() == ButtonType.OK) {
-    //             codes.remove(selectedCode);
-    //         }
-    //     }
-    // }
+    }
 
-    // private void handleSave() {
-    //     try (ObjectOutputStream oos = new ObjectOutputStream(
-    //             new FileOutputStream("tasks.dat"))) {
-    //         oos.writeObject(new ArrayList<>(tasks));
-    //         oos.writeObject(new ArrayList<>(codes));
-    //         showAlert(Alert.AlertType.INFORMATION, "Save Successful",
-    //                 "Data has been saved successfully.");
-    //     } catch (IOException e) {
-    //         showAlert(Alert.AlertType.ERROR, "Save Error",
-    //                 "Error saving data: " + e.getMessage());
-    //     }
-    // }
-
-    // private void handleLoad() {
-    //     try (ObjectInputStream ois = new ObjectInputStream(
-    //             new FileInputStream("tasks.dat"))) {
-    //         ArrayList<Task> loadedTasks = (ArrayList<Task>) ois.readObject();
-    //         ArrayList<String> loadedCodes = (ArrayList<String>) ois.readObject();
-
-    //         tasks.setAll(loadedTasks);
-    //         codes.setAll(loadedCodes);
-
-    //         // Rebuild heap with loaded tasks
-    //         rebuildHeap();
-    //         updateTableView();
-
-    //         showAlert(Alert.AlertType.INFORMATION, "Load Successful",
-    //                 "Data has been loaded successfully.");
-    //     } catch (IOException | ClassNotFoundException e) {
-    //         showAlert(Alert.AlertType.ERROR, "Load Error",
-    //                 "Error loading data: " + e.getMessage());
-    //     }
-    // }
-
-    // private void rebuildHeap() {
-    //     taskHeap = new MaxHeap();
-    //     for (Task task : tasks) {
-    //         taskHeap.insert(task);
-    //     }
-    // }
+    private void refreshResourceColumn(){
+        for(Task t: tasks){ 
+            System.out.println(t.getCode());
+            String resource = App.rm.localResourceLookUp(t.getCode());
+            t.setResources(resource);
+        }
+    }
 
     private void updateTableView() {
-        System.out.println(tasks.size());
+        // System.out.println("Updating Table View");
+        // System.out.println("Pre Update Tasks: " + tasks.toString());
         updateTasks();
-        System.out.println(tasks.toString());
+        refreshResourceColumn();
+        // System.out.println("Post Update Tasks: " + tasks.toString());
         tableView.refresh();
     }
-
-    private void updateButtonStates() {
-        boolean taskSelected = tableView.getSelectionModel().getSelectedItem() != null;
-        tEdit.setDisable(!taskSelected);
-        tDel.setDisable(!taskSelected);
-    }
-
-    private void updateCodeButtonStates() {
-        boolean codeSelected = Listview.getSelectionModel().getSelectedItem() != null;
-        CodeEdit.setDisable(!codeSelected);
-        CodeDel.setDisable(!codeSelected);
-    }
-
 
     private void showAlert(Alert.AlertType type, String title, String content) {
         Alert alert = new Alert(type);
