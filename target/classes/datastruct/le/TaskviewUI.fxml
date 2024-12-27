@@ -42,12 +42,12 @@
         <Button fx:id="tEdit" layoutX="575.0" layoutY="927.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="207.0" text="Edit" textAlignment="JUSTIFY" />
       <ImageView fitHeight="108.0" fitWidth="108.0" layoutX="1590.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../images/usep-removebg-preview.png" />
+            <Image url="@usep-removebg-preview.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="108.0" fitWidth="108.0" layoutX="1736.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../images/saddd-removebg-preview.png" />
+            <Image url="@saddd-removebg-preview.png" />
          </image>
       </ImageView>
       <Line endX="17.0" endY="-78.0" layoutX="1478.0" layoutY="956.0" startX="17.0" startY="124.0" stroke="WHITE" />

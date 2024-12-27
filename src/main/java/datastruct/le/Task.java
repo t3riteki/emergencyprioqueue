@@ -1,10 +1,10 @@
 package datastruct.le;
 
-public class prioTask implements Comparable<prioTask>{
+public class Task implements Comparable<Task>{
     private String code, address;
     private int prioLevel, pubtime, severity;
 
-    public prioTask (String code, String address, int currtime, int severity){
+    public Task (String code, String address, int currtime, int severity){
         this.code = code; 
         this.address = address;
         this.pubtime = currtime;
@@ -67,11 +67,11 @@ public class prioTask implements Comparable<prioTask>{
 //------------------------------Overrides------------------------------//
 
     @Override
-    public int compareTo(prioTask node) {
+    public int compareTo(Task node) {
         return Integer.compare(getPrioLevel(), node.getPrioLevel());
     }
 
     public String toString(){
         return this.code + " " + this.address + " " + this.pubtime + " " + this.severity + " " + getPrioLevel();
     }
-}
+}   

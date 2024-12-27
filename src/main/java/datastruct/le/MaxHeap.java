@@ -1,21 +1,21 @@
 package datastruct.le;
 
+// Reference and Templated from https://www.geeksforgeeks.org/max-heap-in-java/ big thanks, big thanks
+
 public class MaxHeap {
-    private prioTask[] taskHeap;
+    private Task[] taskHeap;
     private int currentSize;
-    private int maxSize;
+    private final int maxSize = 255;
 
     //--------------------------------Constructor--------------------------------//
-    public MaxHeap()
-    {
+    public MaxHeap(){
+        this.taskHeap = new Task[maxSize];
         this.currentSize = 0;
-        this.maxSize = 255;
-        this.taskHeap = new prioTask[maxSize];
     }
 
     public MaxHeap(MaxHeap heap){
-        this.currentSize = heap.getCurrentSize();
         taskHeap = heap.getTaskHeap();
+        this.currentSize = heap.getCurrentSize();
     }
     //--------------------------------Getters--------------------------------//
 
@@ -23,7 +23,7 @@ public class MaxHeap {
         return currentSize;
     }
 
-    public prioTask[] getTaskHeap() {
+    public Task[] getTaskHeap() {
         return taskHeap;
     }
 
@@ -51,7 +51,7 @@ public class MaxHeap {
 
     private void swap(int fpos, int spos)
     {
-        prioTask tmp;
+        Task tmp;
         tmp = taskHeap[fpos];
         taskHeap[fpos] = taskHeap[spos];
         taskHeap[spos] = tmp;
@@ -77,7 +77,7 @@ public class MaxHeap {
         }
     }
  
-    public void insert(prioTask element)
+    public void insert(Task element)
     {
         taskHeap[currentSize] = element;
  
@@ -90,15 +90,15 @@ public class MaxHeap {
         currentSize++;
     }
  
-    public prioTask extractMax()
+    public Task extractMax()
     {
-        prioTask popped = taskHeap[0];
+        Task popped = taskHeap[0];
         taskHeap[0] = taskHeap[--currentSize];
         maxHeapify(0);
         return popped;
     }
 
-    public void print()
+    public void display()
     {
  
         for (int i = 0; i < currentSize / 2; i++) {
