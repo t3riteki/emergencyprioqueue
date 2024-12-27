@@ -15,6 +15,7 @@ public class App extends Application {
     // Main Data structures
     public static hashingTable codeTable;
     public static MaxHeap taskHeap;
+    public static resourceManager rm;
 
     public static FileIO fileHandler; // Handler
 
@@ -39,6 +40,7 @@ public class App extends Application {
 
         codeTable = new hashingTable();
         taskHeap = new MaxHeap();
+        rm = new resourceManager();
 
         launch();
     }

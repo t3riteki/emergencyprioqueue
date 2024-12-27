@@ -67,7 +67,7 @@ public class TaskViewController {
             Task task = cellData.getValue();
             String code = task.getCode();
             
-            String resources = App.taskHeap.localResourceLookUp(code);
+            String resources = App.rm.localResourceLookUp(code);
 
             return new SimpleStringProperty(resources);
         });

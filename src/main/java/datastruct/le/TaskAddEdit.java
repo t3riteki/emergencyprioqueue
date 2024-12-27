@@ -50,7 +50,7 @@ public class TaskAddEdit {
     public void initialize() {
         // Initialize code ComboBox with sample values
         ObservableList<String> codes = FXCollections.observableArrayList(
-                "Fire", "Theft", "Murder", "Hostage", "Shooting", "Building Collapse", "Rescue Situation", "Animal Emergencies"
+                "Fire", "Theft", "Murder", "Hostage", "Shooting", "Building Collapse", "Rescue Situation", "Animal Emergency"
         );
         codeComboBox.setItems(codes);
 

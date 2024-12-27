@@ -125,24 +125,6 @@ public class MaxHeap {
         }
     }
 
-    public String localResourceLookUp(String code){
-        String necResource;
-
-        switch (code) {
-            case "Fire": necResource = "Firefighters, Paramedics "; break;
-            case "Theft": necResource = "Police"; break;
-            case "Murder": necResource = "Police, Paramedics"; break;
-            case "Hostage": necResource = "Police"; break;
-            case "Shooting": necResource = "Police, Paramedics"; break;
-            case "Building Collapse": necResource = "Firefighters, Paramedics, Rescuers"; break;
-            case "Rescue Situation": necResource = "Rescuers, paramedics"; break;
-            case "Animal Emergencies": necResource = "Firefighters, Emergency Veterinarians"; break;
-            default: necResource = "Null "; break;
-        }
-
-        return necResource;
-    }
-
     //--------------------------------Traversal--------------------------------//
     @Override
     public String toString(){
